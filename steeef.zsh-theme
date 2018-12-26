@@ -7,38 +7,33 @@
 
 prompt_steeef_help () {
   cat <<EOH
-This prompt can be customized with:
+This theme can be customized with:
 
-    prompt steeef [username_color] [hostname_color] [pwd_color] [branch_color]
-        [unindexed_color] [unindexed_indicator]
-        [indexed_color] [indexed_indicator]
-        [untracked_color] [untracked_indicator]
-        [stashed_color] [stashed_indicator]
+    prompt steeef [username_color] [hostname_color] [pwd_color] [branch_color] \
+        [unindexed_color] [unindexed_indicator] [indexed_color] [indexed_indicator] \
+        [untracked_color] [untracked_indicator] [stashed_color] [stashed_indicator]
 
-The default values for each parameter, for 256-color terminals (or otherwise)
+The parameters with their default values, for 256-color terminals (or otherwise),
 are the following:
 
- 1. username color: 135 (or magenta)
- 2. hostname color: 166 (or yellow)
- 3. current working directory color: 118 (or green)
- 4. git branch name color: 81 (or cyan)
- 5. git unindexed color: 166 (or yellow)
- 6. git unindexed indicator: ●
- 7. git indexed color: 118 (or green)
- 8. git indexed indicator: ●
- 9. git untracked color: 161 (or red)
-10. git untracked indicator: ●
+  1. username color: 135 (or magenta)
+  2. hostname color: 166 (or yellow)
+  3. current working directory color: 118 (or green)
+  4. git branch name color: 81 (or cyan)
+  5. git unindexed color: 166 (or yellow)
+  6. git unindexed indicator: ●
+  7. git indexed color: 118 (or green)
+  8. git indexed indicator: ●
+  9. git untracked color: 161 (or red)
+ 10. git untracked indicator: ●
+ 11. Git stashed color: undefined
+ 12. Git stashed indicator: undefined
 
-The git stashed color and indicator are not defined by default, and will not be
-shown unless defined.
+The git stashed indicator will not be shown unless defined.
 EOH
 }
 
-prompt_steeef_git() {
-  [[ -n ${git_info} ]] && print -n " ${(e)git_info[prompt]}"
-}
-
-prompt_steeef_virtualenv() {
+prompt_steeef_venv() {
   [[ -n ${VIRTUAL_ENV} ]] && print -n " (%F{blue}${VIRTUAL_ENV:t}%f)"
 }
 
@@ -47,7 +42,7 @@ prompt_steeef_precmd() {
 }
 
 prompt_steeef_setup() {
-  [[ -n ${VIRTUAL_ENV} ]] && export VIRTUAL_ENV_DISABLE_PROMPT=1
+  VIRTUAL_ENV_DISABLE_PROMPT=1
 
   local col_user
   local col_host
@@ -93,12 +88,14 @@ prompt_steeef_setup() {
   zstyle ':zim:git-info:untracked' format "${col_untrk}${ind_untrk}"
   if [[ -n ${ind_stash} ]]; then
     zstyle ':zim:git-info:stashed' format "${col_stash}${ind_stash}"
+  else
+    zstyle -d ':zim:git-info:stashed' format
   fi
   zstyle ':zim:git-info:keys' format \
-    'prompt' "(${col_brnch}%b%c%I%i%u%f%S%f)%s"
+    'prompt' " (${col_brnch}%b%c%I%i%u%f%S%f)%s"
 
   PS1="
-${col_user}%n%f at ${col_host}%m%f in ${col_pwd}%~%f\$(prompt_steeef_git)\$(prompt_steeef_virtualenv)
+${col_user}%n%f at ${col_host}%m%f in ${col_pwd}%~%f\${(e)git_info[prompt]}\$(prompt_steeef_venv)
 %(!.#.$) "
   RPS1=''
 }
@@ -109,7 +106,8 @@ prompt_steeef_preview () {
   else
     prompt_preview_theme steeef
     print
-    prompt_preview_theme steeef magenta yellow green cyan magenta '!' green '+' red '?' yellow '$'
+    prompt_preview_theme steeef magenta yellow green cyan \
+        magenta '!' green '+' red '?' yellow '$'
   fi
 }
 
