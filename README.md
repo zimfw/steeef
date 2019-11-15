@@ -1,21 +1,18 @@
 steeef
 ======
 
-A customizable version of
-[steeef's](https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/steeef.zsh-theme)
-theme.
+A customizable version of [steeef's] theme.
 
-![steeef theme](https://i.eriner.me/zim_prompt_steeef.png)
+![steeef theme]
 
 What does it show?
 ------------------
 
   * "`user` at `hostname` in `working directory`"
-  * Git branch name, or commit short hash when in
-    ['detached HEAD' state](http://gitfaq.org/articles/what-is-a-detached-head.html).
+  * Git branch name, or commit short hash when in ['detached HEAD' state].
     Also, unindexed, indexed, and untracked indicators, and an optional stashed
     indicator (must be customized, see below).
-  * Python [`venv`](https://docs.python.org/3/library/venv.html) indicator.
+  * Python [venv] indicator.
 
 Settings
 --------
@@ -44,5 +41,10 @@ The git stashed indicator will not be shown unless defined.
 Requirements
 ------------
 
-Requires Zim's [`git-info`](https://github.com/zimfw/git-info) module to show
-git information.
+Requires Zim's [git-info] module to show git information.
+
+[steeef's]: https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/steeef.zsh-theme
+[steeef theme]: https://zimfw.github.io/images/prompts/steeef.png
+['detached HEAD' state]: http://gitfaq.org/articles/what-is-a-detached-head.html
+[venv]: https://docs.python.org/3/library/venv.html
+[git-info]: https://github.com/zimfw/git-info
