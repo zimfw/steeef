@@ -6,7 +6,7 @@
 # Requires the `git-info` zmodule to be included in the .zimrc file.
 
 _prompt_steeef_venv() {
-  [[ -n ${VIRTUAL_ENV} ]] && print -n " (%F{blue}${VIRTUAL_ENV:t}%f)"
+  if [[ -n ${VIRTUAL_ENV} ]] print -n " (%F{blue}${VIRTUAL_ENV:t}%f)"
 }
 
 # use extended color palette if available
@@ -32,7 +32,7 @@ fi
 : ${UNTRACKED_IND=●}
 VIRTUAL_ENV_DISABLE_PROMPT=1
 
-setopt nopromptbang promptcr promptpercent promptsp promptsubst
+setopt nopromptbang prompt{cr,percent,sp,subst}
 
 typeset -gA git_info
 if (( ${+functions[git-info]} )); then
