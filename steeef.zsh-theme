@@ -5,10 +5,6 @@
 #
 # Requires the `git-info` zmodule to be included in the .zimrc file.
 
-_prompt_steeef_venv() {
-  if [[ -n ${VIRTUAL_ENV} ]] print -n " (%F{blue}${VIRTUAL_ENV:t}%f)"
-}
-
 # use extended color palette if available
 if (( terminfo[colors] >= 256 )); then
   : ${USER_COLOR=135}
@@ -53,6 +49,6 @@ if (( ${+functions[git-info]} )); then
 fi
 
 PS1='
-%F{${USER_COLOR}}%n%f at %F{${HOST_COLOR}}%m%f in %F{${PWD_COLOR}}%~%f${(e)git_info[prompt]}$(_prompt_steeef_venv)
+%F{${USER_COLOR}}%n%f at %F{${HOST_COLOR}}%m%f in %F{${PWD_COLOR}}%~%f${(e)git_info[prompt]}${VIRTUAL_ENV:+" (%F{blue}${VIRTUAL_ENV:t}%f)"}
 %(!.#.$) '
 unset RPS1
