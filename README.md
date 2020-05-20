@@ -3,7 +3,7 @@ steeef
 
 A customizable version of [steeef's] theme.
 
-![steeef theme]
+<img width="706" src="https://zimfw.github.io/images/prompts/steeef@2.png">
 
 What does it show?
 ------------------
@@ -44,7 +44,6 @@ Requirements
 Requires Zim's [git-info] module to show git information.
 
 [steeef's]: https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/steeef.zsh-theme
-[steeef theme]: https://zimfw.github.io/images/prompts/steeef.png
 ['detached HEAD' state]: http://gitfaq.org/articles/what-is-a-detached-head.html
 [venv]: https://docs.python.org/3/library/venv.html
 [git-info]: https://github.com/zimfw/git-info
