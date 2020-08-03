@@ -25,7 +25,7 @@ colors for 256-color terminals (or otherwise).
 | --------------- | ----------------------- | ---------------- |
 | USER_COLOR      | User name color         | 135 (or magenta) |
 | HOST_COLOR      | Host name color         | 166 (or yellow)  |
-| PWD_COLOR       | Working directory color | 188 (or green)   |
+| PWD_COLOR       | Working directory color | 118 (or green)   |
 | BRANCH_COLOR    | Git branch name color   | 81 (or cyan)     |
 | UNINDEXED_COLOR | Git unindexed color     | 166 (or yellow)  |
 | UNINDEXED_IND   | Git unindexed indicator | ●                |
