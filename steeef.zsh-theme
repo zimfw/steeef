@@ -7,26 +7,26 @@
 
 # use extended color palette if available
 if (( terminfo[colors] >= 256 )); then
-  : ${USER_COLOR=135}
-  : ${HOST_COLOR=166}
-  : ${PWD_COLOR=118}
-  : ${BRANCH_COLOR=81}
-  : ${UNINDEXED_COLOR=166}
-  : ${INDEXED_COLOR=118}
-  : ${UNTRACKED_COLOR=161}
+  if (( ! ${+USER_COLOR} )) typeset -g USER_COLOR=135
+  if (( ! ${+HOST_COLOR} )) typeset -g HOST_COLOR=166
+  if (( ! ${+PWD_COLOR} )) typeset -g PWD_COLOR=118
+  if (( ! ${+BRANCH_COLOR} )) typeset -g BRANCH_COLOR=81
+  if (( ! ${+UNINDEXED_COLOR} )) typeset -g UNINDEXED_COLOR=166
+  if (( ! ${+INDEXED_COLOR} )) typeset -g INDEXED_COLOR=118
+  if (( ! ${+UNTRACKED_COLOR} )) typeset -g UNTRACKED_COLOR=161
 else
-  : ${USER_COLOR=magenta}
-  : ${HOST_COLOR=yellow}
-  : ${PWD_COLOR=green}
-  : ${BRANCH_COLOR=cyan}
-  : ${UNINDEXED_COLOR=yellow}
-  : ${INDEXED_COLOR=green}
-  : ${UNTRACKED_COLOR=red}
+  if (( ! ${+USER_COLOR} )) typeset -g USER_COLOR=magenta
+  if (( ! ${+HOST_COLOR} )) typeset -g HOST_COLOR=yellow
+  if (( ! ${+PWD_COLOR} )) typeset -g PWD_COLOR=green
+  if (( ! ${+BRANCH_COLOR} )) typeset -g BRANCH_COLOR=cyan
+  if (( ! ${+UNINDEXED_COLOR} )) typeset -g UNINDEXED_COLOR=yellow
+  if (( ! ${+INDEXED_COLOR} )) typeset -g INDEXED_COLOR=green
+  if (( ! ${+UNTRACKED_COLOR} )) typeset -g UNTRACKED_COLOR=red
 fi
-: ${UNINDEXED_IND=●}
-: ${INDEXED_IND=●}
-: ${UNTRACKED_IND=●}
-VIRTUAL_ENV_DISABLE_PROMPT=1
+if (( ! ${+UNINDEXED_IND} )) typeset -g UNINDEXED_IND=●
+if (( ! ${+INDEXED_IND} )) typeset -g INDEXED_IND=●
+if (( ! ${+UNTRACKED_IND} )) typeset -g UNTRACKED_IND=●
+typeset -g VIRTUAL_ENV_DISABLE_PROMPT=1
 
 setopt nopromptbang prompt{cr,percent,sp,subst}
 
