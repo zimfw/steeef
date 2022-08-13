@@ -44,6 +44,6 @@ Requirements
 Requires Zim's [git-info] module to show git information.
 
 [steeef's]: https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/steeef.zsh-theme
-['detached HEAD' state]: http://gitfaq.org/articles/what-is-a-detached-head.html
+['detached HEAD' state]: https://git-scm.com/docs/git-checkout#_detached_head
 [venv]: https://docs.python.org/3/library/venv.html
 [git-info]: https://github.com/zimfw/git-info
